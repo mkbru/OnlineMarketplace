@@ -1,42 +1,59 @@
-Application Architecture & Design
+   Application Architecture & Design
 
-Node.js/Express, MongoDB, JWT
 
-Run Locally
+This is a REST API written in Node.js using the Express framework and MongoDB for the database. 
+
+All requests are being authenticated using JSON web tokens (<b>RFC 7519</b>) .
+
+The application is levering a Docker container for easy deployment.
+
+![alt text](https://github.com/mkbru/OnlineMarketplace/images/apiDesign.png)
+
+![alt text](https://github.com/mkbru/OnlineMarketplace/images/dbSchema.png)
+
+<br/>
+To run the application on your local follow the instructions below.
 
     git clone
     
-    cd /
+    cd /OnlineMarketplace
+    
+    mkdir config
+    
+    cd config
+    
+    touch config.js (paste the config file in here and save the file)
 
     docker build -t ecommerce:v1 .
     
     docker ps       
     
     docker run -d -p 3000:3000 <CONTAINER ID> 
+    
 
 
 Usage
 
-To generate a Token create a new user and generate a token, response containing a JWT token will be sent back. Attach it to the header of all requests used to communicate with this API. 
+To use this API the you must create a new user, and generate a token. The token should be attached to the request 'Authorization' header for all POST, PUT and DELETE requests. 
 
-| Users API |Method| URL | Curl Example |
+| Users API |Method| URL | Example Request |
 |------------- | -------------   | ---| ---|
 |[Create a new user]()        |`/Post `    | /users/signup|{"email":"testuser@gmail.com", "password":"abcd1234"}|
 |[Generate a token]()             |`/Get  `    |/users/signin |{"email":"testuser@gmail.com", "password":"abcd1234"}|
 
 
 
-| Products API |Method| URL | Curl Example |
+| Products API |Method| URL | Example Request |
 |------------- | -------------   | ---| ----| 
 |[Create a new Product]()        |`/Post `    | /products/create|{"title":"Gloves","price":"20.00","inventory_count":"75"}|
 |[Get all Products]()             |`/Get  `    |/products ||
 |[Get available Products]()             |`/Get  `    |/products/available | |
 |[Get a Product by Id]()           |`/Get `     |/products/:id ||
-|[Update a Product by Id]()         |`/Update `  |/products/:id |{"title":"Mittens","price":"20.00","inventory_count":"50"}|
+|[Update a Product by Id]()         |`/Put `  |/products/:id |{"title":"Mittens","price":"20.00","inventory_count":"50"}|
 |[Delete a Product by Id]()         |`/Delete`   |/products/:id ||
 
 
-| Carts API |Method| URL | Curl Example |
+| Carts API |Method| URL | Example Request |
 |------------- | -------------   | ---| ---|
 |[Create a new Cart]()        |`/Post `    | /carts/create||
 |[Add a Product to a Cart]()             |`/Post  `    |/carts/addproduct |{"cart" : "$CART_ID","products" : [{"id" : "$PRODUCT_ID","quantity":"5"}]}|
@@ -44,5 +61,7 @@ To generate a Token create a new user and generate a token, response containing 
 |[Cancel a Cart]()             |`/Post  `    |/carts/cancel/:id ||
 |[Get all Carts]()             |`/Get  `    |/carts ||
 |[Get a Cart by Id]()           |`/Get `     |/carts/:id ||
-|[Update a Cart by Id]()         |`/Update `  |/carts/:id |{"cart" : "$CART_ID","products" : [{"id" : "$PRODUCT_ID","quantity":"10"}]}|
+|[Update a Cart by Id]()         |`/Put `  |/carts/:id |{"cart" : "$CART_ID","products" : [{"id" : "$PRODUCT_ID","quantity":"10"}]}|
 |[Delete a Cart by Id]()         |`/Delete`   |/carts/:id ||
+
+

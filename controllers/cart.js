@@ -110,6 +110,8 @@ exports.carts_details = (req, res) => {
         .exec((err, carts) => {
             if (err) return next(err);
 
+            console.log(carts[0].products);
+
             for (let c in carts) {
                 carts[c].total = carts[c].products.map(x => {
                     return x.quantity * x.id.price;

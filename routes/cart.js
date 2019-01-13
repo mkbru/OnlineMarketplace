@@ -23,7 +23,7 @@ router.get('/', cart_controller.carts_details);
 
 router.get('/:id',[error,validateObject], cart_controller.cart_details);
 
-router.put('/:id', [error,validateObject], cart_controller.cart_update);
+router.put('/:id', [error,validateObject,isCart,isCartOpen], cart_controller.cart_update);
 
 router.delete('/:id', [error,validateObject,isCart,isCartClosed], cart_controller.cart_delete);
 

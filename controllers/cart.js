@@ -42,24 +42,17 @@ exports.cart_add_product = async (req, res, next) => {
 
 };
 
-exports.cart_checkout = async (req, res) => {
+exports.cart_checkout = (req, res) => {
 
     const id = {_id: req.params.id};
     const update = {$set: {status: 'COMPLETE'}};
 
-    Cart.findOneAndUpdate(id, update, (err, cart) => {
-        async.eachSeries(cart.products, (obj, done) => {
-
-        }, err => {
-            if (err) return next(err);
-            return res.status(200).json({
-                message: 'Cart checkout complete.',
-                user: '',
-                data: {'Cart Id': cart.id}
-            });
-
+    Cart.findOneAndUpdate(id, update, (err,cart) => {
+        return res.status(200).json({
+            message: 'Cart checkout complete.',
+            user: '',
+            data: {'Cart Id': cart._id}
         });
-    }, err => {
     });
 };
 

@@ -7,9 +7,9 @@ All requests are being authenticated using JSON web tokens (<b>RFC 7519</b>) .
 
 The application is levering a Docker container for easy deployment.
 
-![alt text](https://github.com/mkbru/OnlineMarketplace/images/apiDesign.png)
+![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)
 
-![alt text](https://github.com/mkbru/OnlineMarketplace/images/dbSchema.png)
+![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/dbSchema.png)
 
 <br/>
 To run the application on your local follow the instructions below.

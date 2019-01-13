@@ -1,13 +1,13 @@
    Application Architecture & Design
 
+![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)
+
 
 This is a REST API written in Node.js using the Express framework and MongoDB for the database. 
 
 All requests are being authenticated using JSON web tokens (<b>RFC 7519</b>) .
 
-The application is levering a Docker container for easy deployment.
-
-![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)
+The application is leveraging a Docker container for easy deployment.
 
 ![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/dbSchema.png)
 

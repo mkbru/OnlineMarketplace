@@ -64,7 +64,7 @@ To use this API the you must create a new user, and generate a token. The token 
 |[Update a Cart by Id]()         |`/Put `  |/carts/:id |{"cart" : "$CART_ID","products" : [{"id" : "$PRODUCT_ID","quantity":"10"}]}|
 |[Delete a Cart by Id]()         |`/Delete`   |/carts/:id ||
 
-###Integration Tests
+### Integration Tests
 
 This project provides integration tests for the routes and authorization. 
 

@@ -1,4 +1,4 @@
-###Application Architecture & Design
+### Application Architecture & Design
 
 ![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)
 
@@ -16,25 +16,23 @@ To run the application on your local follow the instructions below.
 
     git clone https://github.com/mkbru/OnlineMarketplace.git
     
-    cd /OnlineMarketplace
+    cd OnlineMarketplace
     
     mkdir config
     
     cd config
     
-    touch config.js (paste the config file in here and save the file)
+    vi config.js (paste the config file in here and save the file)
     
     cd ..
 
     docker build -t onlinemarketplace:v1 . 
     
-    docker images       
-    
-    docker run -p 8080:8080 -d <IMAGE_ID>
+    docker run -p 8080:8080 -d onlinemarketplace:v1
    
 
 
-###Usage
+### Usage
 
 To use this API the you must create a new user, and generate a token. The token should be attached to the request 'Authorization' header for all requests. 
 

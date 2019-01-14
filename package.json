@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,11 +17,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
-    "express-json-validator-middleware": "^1.2.3",
     "express-jwt": "^5.3.1",
-    "express-validation": "^1.0.2",
-    "express-validator": "^5.3.1",
-    "joi": "^14.3.1",
     "jsonwebtoken": "^8.2.2",
     "mocha": "^5.2.0",
     "mongoose": "^5.4.2",

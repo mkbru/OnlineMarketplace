@@ -1,10 +1,13 @@
-FROM node:6.9.2
+FROM node:8
+
+WORKDIR /usr/src/app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
 
 EXPOSE 8080
 
-ENTRYPOINT ["node","server.js"]
+ENTRYPOINT ["npm","start"]

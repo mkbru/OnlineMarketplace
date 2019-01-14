@@ -1,4 +1,4 @@
-   Application Architecture & Design
+###Application Architecture & Design
 
 ![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)
 
@@ -14,7 +14,7 @@ The application is leveraging a Docker container for easy deployment.
 <br/>
 To run the application on your local follow the instructions below.
 
-    git clone
+    git clone https://github.com/mkbru/OnlineMarketplace.git
     
     cd /OnlineMarketplace
     
@@ -23,18 +23,20 @@ To run the application on your local follow the instructions below.
     cd config
     
     touch config.js (paste the config file in here and save the file)
-
-    docker build -t ecommerce:v1 .
     
-    docker ps       
+    cd ..
+
+    docker build -t onlinemarketplace:v1 . 
     
-    docker run -d -p 3000:3000 <CONTAINER ID> 
+    docker images       
     
+    docker run -p 8080:8080 -d <IMAGE_ID>
+   
 
 
-Usage
+###Usage
 
-To use this API the you must create a new user, and generate a token. The token should be attached to the request 'Authorization' header for all POST, PUT and DELETE requests. 
+To use this API the you must create a new user, and generate a token. The token should be attached to the request 'Authorization' header for all requests. 
 
 | Users API |Method| URL | Example Request |
 |------------- | -------------   | ---| ---|
@@ -64,4 +66,11 @@ To use this API the you must create a new user, and generate a token. The token 
 |[Update a Cart by Id]()         |`/Put `  |/carts/:id |{"cart" : "$CART_ID","products" : [{"id" : "$PRODUCT_ID","quantity":"10"}]}|
 |[Delete a Cart by Id]()         |`/Delete`   |/carts/:id ||
 
+###Integration Tests
 
+This project provides integration tests for the routes and authorization. 
+
+To run the tests:
+
+    cd OnlineMarketplace
+    npm test

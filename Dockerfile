@@ -1,13 +1,16 @@
-FROM node:8
+FROM node:alpine
 
-WORKDIR /usr/src/app
+RUN apk add --no-cache git
 
-COPY package*.json ./
+RUN apk add --no-cache openssh
 
-RUN npm install
+WORKDIR /data
 
-COPY . .
+RUN git clone https://github.com/mkbru/OnlineMarketplace.git /data/app
 
-EXPOSE 8080
+WORKDIR /data/app/OnlineMarketplace
+
+EXPOSE 3000
 
 ENTRYPOINT ["npm","start"]
+

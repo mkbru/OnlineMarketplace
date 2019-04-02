@@ -110,13 +110,13 @@ exports.carts_details = (req, res) => {
         .exec((err, carts) => {
             if (err) return next(err);
 
-            console.log(carts[0].products);
+            // console.log(carts[0].products);
 
-            for (let c in carts) {
-                carts[c].total = carts[c].products.map(x => {
-                    return x.quantity * x.id.price;
-                }).reduce((a, b) => a + b, 0);
-            }
+            // for (let c in carts) {
+            //     carts[c].total = carts[c].products.map(x => {
+            //         return x.quantity * x.id.price;
+            //     }).reduce((a, b) => a + b, 0);
+            // }
 
             res.status(200).json({
                 message: 'Get all carts',

@@ -19,7 +19,7 @@ router.post('/checkout/:id',[validateObject,cartOpen], cart_controller.cart_chec
 
 router.post('/cancel/:id', [validateObject,isCart,isCartOpen], cart_controller.cart_cancel_checkout);
 
-router.get('/', cart_controller.carts_details);
+router.get('/',[checkAuth], cart_controller.carts_details);
 
 router.get('/:id',[validateObject], cart_controller.cart_details);
 

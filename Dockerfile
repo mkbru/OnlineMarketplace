@@ -12,5 +12,10 @@ WORKDIR /data/app/OnlineMarketplace
 
 EXPOSE 3000
 
+RUN addgroup -S -g 123456 notrootgroup &&\
+    adduser -S -u 123456 -G notrootgroup notrootuser
+
+USER 123456:123456
+
 ENTRYPOINT ["npm","start"]
 

@@ -17,6 +17,12 @@ app.use('/products', product);
 app.use('/carts', cart);
 app.use('/users', user);
 
+app.use('/', (req,res) => {
+   res.status(200).json({
+      message: "welcome"
+   });
+});
+
 app.listen(config.app.port, () => console.log('Application listening on 3000'));
 
 module.exports = app;

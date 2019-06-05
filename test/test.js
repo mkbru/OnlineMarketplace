@@ -8,8 +8,6 @@ const should = chai.should();
 
 const genToken = require('../controllers/user');
 
-
-
 chai.use(chaiHttp);
 
 describe("Integration tests", async () => {
@@ -20,15 +18,14 @@ describe("Integration tests", async () => {
     let cartProduct = '';
 
 
-
     describe("Authorization", () => {
 
         it("Should create a new user", done => {
             chai.request(server)
                 .post('/users/signup')
                 .set('Authorization', token)
-                .send({'email':'testuse@gmail.com', 'password':'abcd1234'})
-                .end((err,res) => {
+                .send({'email': 'testuse@gmail.com', 'password': 'abcd1234'})
+                .end((err, res) => {
                     res.should.have.status(200);
                     done();
                 });
@@ -38,8 +35,8 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .post('/users/signin')
                 .set('Authorization', token)
-                .send({'email':'testuse@gmail.com', 'password':'abcd1234'})
-                .end((err,res) => {
+                .send({'email': 'testuse@gmail.com', 'password': 'abcd1234'})
+                .end((err, res) => {
                     token = res.body.token;
                     res.should.have.status(200);
                     done();
@@ -55,20 +52,20 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .post('/products')
                 .set('Authorization', token)
-                .send({'title':'beanie', 'price':19.99, 'inventory_count':45})
-                .end((err,res) => {
+                .send({'title': 'beanie', 'price': 19.99, 'inventory_count': 45})
+                .end((err, res) => {
                     product = res.body.data._id;
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done();
                 });
-            });
+        });
 
         it("Should get all products", done => {
             chai.request(server)
                 .get('/products')
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done();
@@ -79,18 +76,18 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .get('/products/available')
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done()
                 });
-            });
+        });
 
         it("Should get a product by Id", done => {
             chai.request(server)
                 .get('/products/' + product)
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done();
@@ -99,10 +96,10 @@ describe("Integration tests", async () => {
 
         it("Should update a product by Id", done => {
             chai.request(server)
-                .put('/products/'+product)
+                .put('/products/' + product)
                 .set('Authorization', token)
-                .send({'title':'beanie', 'price':21.99, 'inventory_count':50})
-                .end((err,res) => {
+                .send({'title': 'beanie', 'price': 21.99, 'inventory_count': 50})
+                .end((err, res) => {
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done();
@@ -111,14 +108,14 @@ describe("Integration tests", async () => {
 
         it("Should delete a product by Id", done => {
             chai.request(server)
-                .delete('/products/'+product)
+                .delete('/products/' + product)
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
                     done()
                 });
-            });
+        });
     });
 
     describe("Cart routes", () => {
@@ -127,19 +124,19 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .post('/carts')
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     cart = res.body.data._id;
                     res.should.have.status(200);
                     done();
-            });
+                });
         });
 
         it("Should create a new product", done => {
             chai.request(server)
                 .post('/products')
                 .set('Authorization', token)
-                .send({'title':'beanie', 'price':19.99, 'inventory_count':45})
-                .end((err,res) => {
+                .send({'title': 'beanie', 'price': 19.99, 'inventory_count': 45})
+                .end((err, res) => {
                     cartProduct = res.body.data._id;
                     res.should.have.status(200);
                     res.body.status.should.equal(true);
@@ -151,8 +148,8 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .post('/carts/addproduct')
                 .set('Authorization', token)
-                .send({'cart' : cart , products : [{id : cartProduct,quantity:'1'}]})
-                .end((err,res) => {
+                .send({'cart': cart, products: [{id: cartProduct, quantity: '1'}]})
+                .end((err, res) => {
                     res.should.have.status(200);
                     done();
                 });
@@ -170,7 +167,7 @@ describe("Integration tests", async () => {
             chai.request(server)
                 .get('/carts')
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     done();
                 })
@@ -178,9 +175,9 @@ describe("Integration tests", async () => {
 
         it("Should get a cart by id", done => {
             chai.request(server)
-                .get('/carts/'+cart)
+                .get('/carts/' + cart)
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     done();
                 })
@@ -188,10 +185,10 @@ describe("Integration tests", async () => {
 
         it("Should update a cart by id", done => {
             chai.request(server)
-                .put('/carts/'+cart)
+                .put('/carts/' + cart)
                 .set('Authorization', token)
-                .send({'cart' : cart , products : [{id : cartProduct,quantity:'2'}]})
-                .end((err,res) => {
+                .send({'cart': cart, products: [{id: cartProduct, quantity: '2'}]})
+                .end((err, res) => {
                     res.should.have.status(200);
                     done();
                 });
@@ -199,9 +196,9 @@ describe("Integration tests", async () => {
 
         it("Should delete a cart by id", done => {
             chai.request(server)
-                .delete('/carts/'+cart)
+                .delete('/carts/' + cart)
                 .set('Authorization', token)
-                .end((err,res) => {
+                .end((err, res) => {
                     res.should.have.status(200);
                     done()
                 });

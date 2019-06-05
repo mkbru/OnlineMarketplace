@@ -1,3 +1,5 @@
+https://travis-ci.org/mkbru/online-marketplace.svg?branch=master
+
 ### Application Architecture & Design
 
 ![alt text](https://github.com/mkbru/OnlineMarketplace/blob/master/images/apiDesign.png)

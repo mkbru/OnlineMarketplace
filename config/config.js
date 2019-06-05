@@ -4,6 +4,7 @@ module.exports = {
         JWT_KEY: process.env.JWT_KEY
     },
     db: {
-        mongoDevURL: process.env.MONGO_DEV_URL
+        mongoDevURL: process.env.MONGO_DEV_URL,
+        mongoTestUrl: process.env.MONGO_TEST_URL
     }
 };

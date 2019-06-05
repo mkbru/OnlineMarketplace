@@ -3,3 +3,8 @@ steps:
   args: ['build', '-t', 'gcr.io/online-marketplace-242214/online-marketplace', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/online-marketplace-242214/online-marketplace']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/online-marketplace', 'gcr.io/online-marketplace-242214/online-marketplace:latest']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=marketplace-cluster'

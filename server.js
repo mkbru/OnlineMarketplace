@@ -19,7 +19,7 @@ app.use('/users', user);
 
 app.use('/', (req,res) => {
     res.status(200).json({
-        message: "welcome"
+        message: "hello world"
     });
 });
 

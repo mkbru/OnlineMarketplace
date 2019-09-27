@@ -1,4 +1,12 @@
 # Docker
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Learning - Mike Brusilovsky(bc73df60-c42e-47c6-8830-9ac29f57500a)'
+    azureContainerRegistry: '{"loginServer":"sandboxappimages.azurecr.io", "id" : "/subscriptions/bc73df60-c42e-47c6-8830-9ac29f57500a/resourceGroups/sandbox-app/providers/Microsoft.ContainerRegistry/registries/sandboxappimages"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
+    includeLatestTag: true
 # Build a Docker image 
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 

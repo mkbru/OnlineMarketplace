@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/cosmos": "^3.3.3",
     "async": "^2.6.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -20,6 +21,8 @@
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.2.2",
     "mocha": "^5.2.0",
+    "mongoclient": "^1.0.3",
+    "mongodb": "^3.3.2",
     "mongoose": "^5.4.2",
     "rootpath": "^0.1.2"
   },

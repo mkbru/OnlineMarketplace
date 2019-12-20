@@ -22,7 +22,7 @@ app.use(morgan('combined'))
 
 app.use('/', (req,res) => {
     res.status(200).json({
-        message: "API is up and running!"
+        message: "API is up and running! ....."
     });
 });
 

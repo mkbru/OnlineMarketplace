@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var morgan = require('morgan')
+
 
 const db = require('./database/db');
 const config = require('./config/config');
@@ -16,10 +18,11 @@ app.use(bodyParser.json());
 app.use('/products', product);
 app.use('/carts', cart);
 app.use('/users', user);
+app.use(morgan('combined'))
 
 app.use('/', (req,res) => {
     res.status(200).json({
-        message: "hello world"
+        message: "API is up and running!"
     });
 });
 

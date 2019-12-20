@@ -24,6 +24,7 @@
     "mongoclient": "^1.0.3",
     "mongodb": "^3.3.2",
     "mongoose": "^5.4.2",
+    "morgan": "^1.9.1",
     "rootpath": "^0.1.2"
   },
   "devDependencies": {
